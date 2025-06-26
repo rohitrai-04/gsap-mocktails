@@ -24,7 +24,7 @@ const Hero = () => {
       start: startValue,
       end: endValue,
       scrub: true,
-      markers: true, // Add markers for debugging (remove in production)
+      // markers: true, // Add markers for debugging (remove in production)
       onUpdate: (self) => {
         if (video.readyState >= 2) { // Check if video is loaded enough to play
           // Calculate video time based on scroll progress
@@ -50,7 +50,7 @@ const Hero = () => {
       yPercent: 100,
       duration: 1,
       ease: "expo.out",
-      stagger: 0.05,
+      stagger: 0.06,
     });
     gsap.from(paragraphSplit.lines, {
       opacity: 0,
@@ -72,10 +72,11 @@ const Hero = () => {
       })
       .to(".right-leaf", { y: 200 }, 0)
       .to(".left-leaf", { y: -200 }, 0);
-   // videoRef.current.onloadedmetadata=()=>{
-   //   tl.to(videoRef.current,{
-   //     currentTime:videoRef.current.duration
-   //   })
+   videoRef.current.onloadedmetadata=()=>{
+     tl.to(videoRef.current,{
+       currentTime:videoRef.current.duration
+     })
+    }
   }, []);
 
   // Setup and cleanup for video animation
